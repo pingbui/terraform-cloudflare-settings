@@ -5,12 +5,12 @@ provider "cloudflare" {
   account_id = var.account_id 
 }
 
-resource "cloudflare_access_rule" "whitelists" {
-  count    = length(var.whitelist_ips)
-  notes    = "${var.notes}-${element(var.whitelist_ips, count.index)}"
-  mode     = "whitelist"
+resource "cloudflare_access_rule" "this" {
+  count    = length(var.rule_values)
+  notes    = "${var.notes}-${element(var.rule_values, count.index)}"
+  mode     = var.mode
   configuration = {
-    target = "ip"
-    value  = element(var.whitelist_ips, count.index)
+    target = var.target
+    value  = element(var.rule_values, count.index)
   }
 }

@@ -26,12 +26,26 @@ variable "zone_id" {
   default     = null
 }
 
-variable "whitelist_ips" {
-  type    = list
-  default = []
+variable "notes" {
+  description = "(Optional) A personal note about the rule. Typically used as a reminder or explanation for the rule."
+  type        = string
+  default     = ""
 }
 
-variable "notes" {
-  type    = string
-  default = ""
+variable "mode" {
+  description = "(Required) The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge""
+  type        = string
+  default     = "whitelist"
+}
+
+variable "target" {
+  description = "(Required) The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country""
+  type        = string
+  default     = "ip"
+}
+
+variable "rule_values" {
+  description = "The list of values to target. Depends on target's type."
+  type    = list
+  default = []
 }
