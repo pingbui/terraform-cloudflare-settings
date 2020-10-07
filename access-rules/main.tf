@@ -6,11 +6,11 @@ provider "cloudflare" {
 }
 
 resource "cloudflare_access_rule" "this" {
-  count    = length(var.rule_values)
-  notes    = "${var.notes}-${element(var.rule_values, count.index)}"
-  mode     = var.mode
+  for_each = { for ar in var.access_rules: ar.value => ar }
+  notes    = lookup(each.value, "notes")
+  mode     = lookup(each.value, "mode", "whitelist") // "block", "challenge", "whitelist", "js_challenge"
   configuration = {
-    target = var.target
-    value  = element(var.rule_values, count.index)
+    target = lookup(each.value, "target", "ip") // "ip", "ip6", "ip_range", "asn", "country"
+    value  = lookup(each.value, "value")
   }
 }
