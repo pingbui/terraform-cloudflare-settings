@@ -21,7 +21,7 @@ variable "account_id" {
 }
 
 variable "zone_id" {
-  description = "Configure API client with this account ID, so calls use the account API rather than the (default) user API."
+  description = "The DNS zone to which the access rule should be added."
   type        = string
   default     = null
 }
