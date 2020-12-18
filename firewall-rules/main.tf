@@ -30,5 +30,5 @@ resource "cloudflare_firewall_rule" "this" {
   action      = lookup(each.value, "action", "block")
   priority    = lookup(each.value, "priority", null)
   paused      = lookup(each.value, "paused", false)
-  products    = lookup(each.value, "products", null)
+  products    = lookup(each.value, "products", null) == null ? null : split(",", lookup(each.value, "products"))
 }
