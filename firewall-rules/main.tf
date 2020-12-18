@@ -28,4 +28,7 @@ resource "cloudflare_firewall_rule" "this" {
   description = lookup(each.value, "description")
   filter_id   = [for ids in values(cloudflare_filter.this)[*]: ids.id if ids.description == lookup(each.value, "description")][0]
   action      = lookup(each.value, "action", "block")
+  priority    = lookup(each.value, "priority", null)
+  paused      = lookup(each.value, "paused", false)
+  products    = lookup(each.value, "products", null)
 }
