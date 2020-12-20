@@ -28,6 +28,7 @@ resource "cloudflare_page_rule" "this" {
     cache_by_device_type        = lookup(each.value, "cache_by_device_type", null)
     cache_deception_armor       = lookup(each.value, "cache_deception_armor", null)
     cache_key_fields            = lookup(each.value, "cache_key_fields", null)
+    cache_level                 = lookup(each.value, "cache_level", null)
     cache_on_cookie             = lookup(each.value, "cache_on_cookie", null)
     cache_ttl_by_status         = lookup(each.value, "cache_ttl_by_status", null)
     disable_apps                = lookup(each.value, "disable_apps", null)
