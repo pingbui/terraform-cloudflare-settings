@@ -8,6 +8,7 @@ provider "cloudflare" {
 resource "cloudflare_access_rule" "this" {
   for_each = { for ar in var.access_rules: ar.value => ar }
   notes    = lookup(each.value, "notes")
+  zone_id  = var.zone_id
   mode     = lookup(each.value, "mode", "whitelist") // "block", "challenge", "whitelist", "js_challenge"
   configuration = {
     target = lookup(each.value, "target", "ip") // "ip", "ip6", "ip_range", "asn", "country"
