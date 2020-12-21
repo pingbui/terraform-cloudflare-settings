@@ -17,6 +17,11 @@ resource "cloudflare_zone" "this" {
 // Settings_override:
 module "cf_settings_override" {
   source = "../../settings_override"
+
+  email      = var.cf_email
+  api_key    = var.cf_api_key
+  api_token  = var.cf_api_token
+  account_id = var.account_id
   
   name     = var.name
   settings = var.settings
@@ -27,6 +32,11 @@ module "cf_settings_override" {
 module "cf_firewall_rules" {
   source = "../../firewall-rules"
 
+  email      = var.cf_email
+  api_key    = var.cf_api_key
+  api_token  = var.cf_api_token
+  account_id = var.account_id
+
   name           = var.name
   filewall_rules = var.filewall_rules
 
@@ -35,6 +45,11 @@ module "cf_firewall_rules" {
 // Access-rules:
 module "cf_access_rules" {
   source = "../../access-rules"
+
+  email      = var.cf_email
+  api_key    = var.cf_api_key
+  api_token  = var.cf_api_token
+  account_id = var.account_id
 
   name         = var.name
   access_rules = var.access_rules
@@ -52,6 +67,11 @@ module "cf_records" {
 // page-rules:
 module "cf_page_rules" {
   source = "../../page-rules"
+
+  email      = var.cf_email
+  api_key    = var.cf_api_key
+  api_token  = var.cf_api_token
+  account_id = var.account_id
 
   name       = var.name
   page_rules = var.page_rules
