@@ -1,6 +1,6 @@
 output "zone_id" {
   description = "The ID of this zone"
-  value       = cloudflare_zone.this.id
+  value       = module.cf_zone.zone_id
 }
 
 output "page_rule_ids" {
