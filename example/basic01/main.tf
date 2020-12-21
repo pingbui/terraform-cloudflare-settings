@@ -7,6 +7,11 @@ module "cf_zone" {
   jump_start = var.jump_start
   plan       = var.plan
   type       = var.type
+
+  cf_email     = var.cf_email
+  cf_api_key   = var.cf_api_key
+  cf_api_token = var.cf_api_token
+  account_id   = var.account_id
 }
 
 // Settings_override:
