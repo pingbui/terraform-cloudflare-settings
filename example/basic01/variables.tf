@@ -44,13 +44,13 @@ variable "plan" {
 }
 
 variable "type" {
-  description = "A full zone implies that DNS is hosted with Cloudflare. Valid values: full, partial. Default is partial."
+  description = "A full zone implies that DNS is hosted with Cloudflare. Valid values: full, partial. Default is full."
   type        = string
-  default     = "partial"
+  default     = "full"
 }
 
 variable "filewall_rules" {
-  description = "List of rules "
+  description = "List of rules"
   type        = list(map(any))
   default     = [{}]
 }
@@ -97,4 +97,10 @@ variable "records" {
   description = "DNS Records of this zone."
   type        = list
   default     = []
+}
+
+variable "cf_ttl" {
+  description = "The TTL of these records. Value of 1 is 'automatic'"
+  type        = string
+  default     = "1"
 }
