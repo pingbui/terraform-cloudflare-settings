@@ -98,9 +98,3 @@ variable "records" {
   type        = list
   default     = []
 }
-
-variable "cf_ttl" {
-  description = "The TTL of these records. Value of 1 is 'automatic'"
-  type        = string
-  default     = "1"
-}
