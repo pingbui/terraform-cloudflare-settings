@@ -22,12 +22,6 @@ variable "domain_name" {
 variable "records" {
   type    = list
   default = [
-    ["www","10.10.10.10","0","A","false"]
+    ["www","10.10.10.10","0","A","false","1"]
   ]
-}
-
-variable "cf_ttl" {
-  description = "The TTL of these records. Value of 1 is 'automatic'"
-  type        = string
-  default     = "1"
 }

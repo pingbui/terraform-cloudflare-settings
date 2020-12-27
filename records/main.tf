@@ -13,12 +13,12 @@ data "cloudflare_zones" "this" {
 }
 
 resource "cloudflare_record" "this" {
-  count    = length(var.records)
+  for_each = { for rs in toset(var.records) : "${rs[0]} ${rs[3]} ${rs[1]}" => rs }
   zone_id  = lookup(data.cloudflare_zones.this.zones[0], "id")
-  name     = element(var.records[count.index], 0)
-  value    = element(var.records[count.index], 1)
-  priority = element(var.records[count.index], 2)
-  type     = element(var.records[count.index], 3)
-  proxied  = element(var.records[count.index], 4)
-  ttl      = var.cf_ttl
+  name     = element(each.value, 0)
+  value    = element(each.value, 1)
+  priority = element(each.value, 2)
+  type     = element(each.value, 3)
+  proxied  = element(each.value, 4)
+  ttl      = element(each.value, 5)
 }

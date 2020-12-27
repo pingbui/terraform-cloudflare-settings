@@ -10,10 +10,10 @@ output "zone_names" {
 
 output "record_ids" {
   description = "The ID of records"
-  value       = cloudflare_record.this.*.id
+  value       = values(cloudflare_record.this)[*]["id"]
 }
 
 output "record_hostnames" {
   description = "The hostname of records"
-  value       = cloudflare_record.this.*.hostname
+  value       = values(cloudflare_record.this)[*]["hostname"]
 }
