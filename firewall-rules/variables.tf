@@ -1,11 +1,13 @@
 variable "cf_email" {
   description = "The email associated with the account"
   type        = string
+  default     = null
 }
 
 variable "cf_api_key" {
   description = "The Cloudflare API key"
   type        = string
+  default     = null
 }
 
 variable "cf_api_token" { 
