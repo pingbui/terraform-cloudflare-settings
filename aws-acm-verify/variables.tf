@@ -33,6 +33,12 @@ variable "validation_domains" {
   default     = [{}]
 }
 
+variable "num_domain_names" {
+  description = "The number of domains."
+  type        = number
+  default     = 1
+}
+
 variable "certificate_arn" {
   description = "The arn of the ACM cert"
   type        = string

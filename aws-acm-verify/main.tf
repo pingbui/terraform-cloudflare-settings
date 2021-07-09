@@ -14,7 +14,7 @@ data "cloudflare_zones" "this" {
 }
 
 resource "cloudflare_record" "this" {
-  count   = var.verity_certificate ? length(var.validation_domains) : 0
+  count   = var.verity_certificate ? var.num_domain_names : 0
   zone_id = lookup(data.cloudflare_zones.this.zones[0], "id")
   name    = element(var.validation_domains, count.index)["resource_record_name"]
   value   = substr(element(var.validation_domains, count.index)["resource_record_value"], 0, length(element(var.validation_domains, count.index)["resource_record_value"]) - 1)
