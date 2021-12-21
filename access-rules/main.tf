@@ -10,7 +10,7 @@ resource "cloudflare_access_rule" "this" {
   notes    = lookup(each.value, "notes")
   zone_id  = var.zone_id
   mode     = lookup(each.value, "mode", "whitelist") // "block", "challenge", "whitelist", "js_challenge"
-  configuration = {
+  configuration {
     target = lookup(each.value, "target", "ip") // "ip", "ip6", "ip_range", "asn", "country"
     value  = lookup(each.value, "value")
   }
