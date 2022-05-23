@@ -2,7 +2,7 @@ provider "cloudflare" {
   email      = var.cf_email
   api_key    = var.cf_api_key
   api_token  = var.cf_api_token
-  account_id = var.account_id 
+  account_id = var.account_id
 }
 
 data "cloudflare_zones" "this" {
@@ -12,7 +12,7 @@ data "cloudflare_zones" "this" {
 }
 
 resource "cloudflare_page_rule" "this" {
-  for_each = { for rule in var.page_rules: rule.target => rule }
+  for_each = { for rule in var.page_rules : rule.target => rule }
 
   zone_id  = lookup(data.cloudflare_zones.this.zones[0], "id")
   target   = lookup(each.value, "target")
@@ -48,7 +48,7 @@ resource "cloudflare_page_rule" "this" {
     rocket_loader               = lookup(each.value, "rocket_loader", null)
     security_level              = lookup(each.value, "security_level", null)
     server_side_exclude         = lookup(each.value, "server_side_exclude", null)
-  //smart_errors                = lookup(each.value, "smart_errors", null)
+    //smart_errors                = lookup(each.value, "smart_errors", null)
     sort_query_string_for_cache = lookup(each.value, "sort_query_string_for_cache", null)
     ssl                         = lookup(each.value, "ssl", null)
     true_client_ip_header       = lookup(each.value, "true_client_ip_header", null)
@@ -63,7 +63,7 @@ resource "cloudflare_page_rule" "this" {
     }
 
     dynamic "minify" {
-      for_each = concat(lookup(each.value, "minify_html", null)[*],lookup(each.value, "minify_css", null)[*],lookup(each.value, "minify_js", null)[*])
+      for_each = concat(lookup(each.value, "minify_html", null)[*], lookup(each.value, "minify_css", null)[*], lookup(each.value, "minify_js", null)[*])
       content {
         html = lookup(each.value, "minify_html", null)
         css  = lookup(each.value, "minify_css", null)

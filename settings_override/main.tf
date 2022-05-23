@@ -2,7 +2,7 @@ provider "cloudflare" {
   email      = var.cf_email
   api_key    = var.cf_api_key
   api_token  = var.cf_api_token
-  account_id = var.account_id 
+  account_id = var.account_id
 }
 
 data "cloudflare_zones" "this" {
@@ -12,7 +12,7 @@ data "cloudflare_zones" "this" {
 }
 
 resource "cloudflare_zone_settings_override" "this" {
-  zone_id  = lookup(data.cloudflare_zones.this.zones[0], "id")
+  zone_id = lookup(data.cloudflare_zones.this.zones[0], "id")
   settings {
     // Crypto:
     always_use_https = lookup(var.settings, "always_use_https", "on")
@@ -34,7 +34,7 @@ resource "cloudflare_zone_settings_override" "this" {
     always_online = lookup(var.settings, "always_online", "on")
     brotli        = lookup(var.settings, "brotli", "on")
     polish        = lookup(var.settings, "polish", null)
-    minify        {
+    minify {
       css  = lookup(var.settings, "css", "on")
       js   = lookup(var.settings, "js", "on")
       html = lookup(var.settings, "html", "on")

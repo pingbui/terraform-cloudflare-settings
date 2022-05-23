@@ -10,7 +10,7 @@ output "initial_settings" {
 
 output "readonly_settings" {
   description = "Which of the current settings are not able to be set by the user."
-  value       = cloudflare_zone_settings_override.this.readonly_settings 
+  value       = cloudflare_zone_settings_override.this.readonly_settings
 }
 
 output "initial_settings_read_at" {

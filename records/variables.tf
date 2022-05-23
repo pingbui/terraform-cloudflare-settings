@@ -10,7 +10,7 @@ variable "cf_api_key" {
   default     = null
 }
 
-variable "cf_api_token" { 
+variable "cf_api_token" {
   description = "The Cloudflare API Token. This is an alternative to email+api_key. If both are specified, api_token will be used over email+api_key fields"
   type        = string
   default     = null
@@ -22,8 +22,8 @@ variable "domain_name" {
 }
 
 variable "records" {
-  type    = list
+  type = list(any)
   default = [
-    ["www","10.10.10.10","0","A","false","1"]
+    ["www", "10.10.10.10", "0", "A", "false", "1"]
   ]
 }

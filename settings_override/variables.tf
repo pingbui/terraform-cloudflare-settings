@@ -10,7 +10,7 @@ variable "cf_api_key" {
   default     = null
 }
 
-variable "cf_api_token" { 
+variable "cf_api_token" {
   description = "The Cloudflare API Token. This is an alternative to email+api_key. If both are specified, api_token will be used over email+api_key fields."
   type        = string
   default     = null
@@ -30,7 +30,7 @@ variable "name" {
 variable "settings" {
   description = "Settings overrides that will be applied to the zone. "
   type        = any
-  default     = {
+  default = {
     // Crypto:
     always_use_https = "on"
     ssl              = "flexible"
@@ -39,15 +39,15 @@ variable "settings" {
     min_tls_version  = "1.0"
 
     // Security:
-    security_level   = "high"
-    challenge_ttl    = "1800"
+    security_level = "high"
+    challenge_ttl  = "1800"
 
     // Speed:
-    always_online    = "on"
-    brotli           = "on"
+    always_online = "on"
+    brotli        = "on"
     // minify
-    css              = "on"
-    js               = "on"
-    html             = "on"
+    css  = "on"
+    js   = "on"
+    html = "on"
   }
 }

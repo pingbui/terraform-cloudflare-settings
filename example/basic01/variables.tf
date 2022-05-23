@@ -10,7 +10,7 @@ variable "cf_api_key" {
   default     = null
 }
 
-variable "cf_api_token" { 
+variable "cf_api_token" {
   description = "The Cloudflare API Token. This is an alternative to email+api_key. If both are specified, api_token will be used over email+api_key fields"
   type        = string
   default     = null
@@ -54,25 +54,25 @@ variable "type" {
 variable "filewall_rules" {
   description = "List of rules"
   type        = list(map(any))
-  default     = [{}]
+  default     = []
 }
 
 variable "access_rules" {
   description = "The list of access rules"
-  type    = list(map(string))
-  default = []
+  type        = list(map(string))
+  default     = []
 }
 
 variable "page_rules" {
   description = "List of page rules."
   type        = list(map(any))
-  default     = [{}]
+  default     = []
 }
 
 variable "settings" {
   description = "Settings overrides that will be applied to the zone."
   type        = any
-  default     = {
+  default = {
     // Crypto:
     always_use_https = "on"
     ssl              = "flexible"
@@ -81,22 +81,22 @@ variable "settings" {
     min_tls_version  = "1.0"
 
     // Security:
-    security_level   = "high"
-    challenge_ttl    = "1800"
+    security_level = "high"
+    challenge_ttl  = "1800"
 
     // Speed:
-    always_online    = "on"
-    brotli           = "on"
+    always_online = "on"
+    brotli        = "on"
 
     // Minify
-    css              = "on"
-    js               = "on"
-    html             = "on"
+    css  = "on"
+    js   = "on"
+    html = "on"
   }
 }
 
 variable "records" {
   description = "DNS Records of this zone."
-  type        = list
+  type        = list(any)
   default     = []
 }

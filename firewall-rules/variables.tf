@@ -10,7 +10,7 @@ variable "cf_api_key" {
   default     = null
 }
 
-variable "cf_api_token" { 
+variable "cf_api_token" {
   description = "The Cloudflare API Token. This is an alternative to email+api_key. If both are specified, api_token will be used over email+api_key fields"
   type        = string
   default     = null
@@ -30,5 +30,5 @@ variable "name" {
 variable "filewall_rules" {
   description = "List of rules "
   type        = list(map(any))
-  default     = [{}]
+  default     = []
 }
